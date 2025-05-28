@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto de Deontología</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Principios de la Ley 1581 de 2012</h1>
+  <p>Relaciona los principios con su definición</p>
+  <section class="container">
+    <section class="control">
+      <div class="time">
+        <p class="label">Tiempo: <span id="timer">00:00</span></p>
+      </div>
+      <div class="score">
+        <p class="label">Principios correctos: <span id="score">0</span> / 8</p>
+      </div>
+      <button id="reset" class="reset" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1lh" height="1lh" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-reload">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M19.933 13.041a8 8 0 1 1 -9.925 -8.788c3.899 -1 7.935 1.007 9.425 4.747" />
+          <path d="M20 4v5h-5" />
+        </svg>
+        Reiniciar Juego
+      </button>
+    </section>
+
+    <section class="principles">
+      <h2>Principios</h2>
+      <div class="principle" draggable="true" id="principle-1">
+        <p>Legalidad</p>
+      </div>
+      <div class="principle" draggable="true" id="principle-2">
+        <p>Finalidad</p>
+      </div>
+      <div class="principle" draggable="true" id="principle-3">
+        <p>Libertad</p>
+      </div>
+      <div class="principle" draggable="true" id="principle-4">
+        <p>Veracidad o Calidad</p>
+      </div>
+      <div class="principle" draggable="true" id="principle-5">
+        <p>Transparencia</p>
+      </div>
+      <div class="principle" draggable="true" id="principle-6">
+        <p>Acceso y Circulación Restringida</p>
+      </div>
+      <div class="principle" draggable="true" id="principle-7">
+        <p>Seguridad</p>
+      </div>
+      <div class="principle" draggable="true" id="principle-8">
+        <p>Confidencialidad</p>
+      </div>
+    </section>
+
+    <section class="definitions">
+      <h2>Definiciones</h2>
+    </section>
+  </section>
+
+  <section class="notifications-container"></section>
+
+  <button id="toggle-dark" class="toggle-dark" title="Activar modo oscuro">
+    🌙
+  </button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
