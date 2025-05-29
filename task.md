@@ -4,4 +4,4 @@ Desarrollar una aplicación web que empareje conceptos sobre los principios de l
 * [X] Convertir la lista de tarjetas de conceptos a una presentación dinámica de esta.
 * [X] Implementar dark-mode.
 * [X] Detener el tiempo del juego cuando todo los principios hayan sido emparejados.
-* [ ] Crear panel de retroalimentación, que será mostrado en lugar del panel de definiciones una vez terminado el juego.
+* [X] Crear panel de retroalimentación, que será mostrado en lugar del panel de definiciones una vez terminado el juego.

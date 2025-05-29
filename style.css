@@ -117,7 +117,7 @@ h2 {
 }
 
 /* Secciones principales */
-:is(.control, .principles, .definitions) {
+:is(.control, .principles, .definitions, .feedback-panel) {
   padding: 1.2rem;
   background-color: var(--color-card);
   border-radius: 1.6rem;
@@ -128,7 +128,7 @@ h2 {
   }
 }
 
-:is(.principles, .definitions) {
+:is(.principles, .definitions, .feedback-panel) {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -143,7 +143,7 @@ h2 {
 }
 
 .principles { grid-area: principles; }
-.definitions { grid-area: definitions; }
+.definitions, .feedback-panel { grid-area: definitions; }
 
 /* Tarjetas de principio y definición */
 :is(.principle, .definition) {
@@ -258,5 +258,32 @@ h2 {
 
   &:active {
     transform: scale(0.95);
+  }
+}
+
+/* Estilos para el panel de retroalimentación */
+.feedback-panel {
+  display: none;
+  flex-direction: column;
+
+  & .feedback-score {
+    font-size: 10pt;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+
+  & .feedback-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  & .feedback-item {
+    font-size: 10pt;
+    line-height: 1.25;
+    font-weight: 400;
   }
 }

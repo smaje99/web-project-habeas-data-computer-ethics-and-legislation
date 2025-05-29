@@ -54,10 +54,15 @@ const score = document.getElementById('score');
 const resetButton = document.getElementById('reset');
 const timer = document.getElementById('timer');
 const toggleDarkModeButton = document.getElementById('toggle-dark');
+const feedbackPanel = document.querySelector('.feedback-panel');
+const definitionsSection = document.querySelector('.definitions');
+const feedbackContent = document.getElementById('feedback-content');
+const backToGameButton = document.getElementById('back-to-game');
 
 let correctCount = 0;
 let tryCount = 0;
 let timerInterval = null;
+let feedbackData = [];
 
 // Inicializa el juego
 window.addEventListener('DOMContentLoaded', () => {
@@ -91,21 +96,7 @@ principlesElement.forEach((principle) => {
   });
 });
 
-resetButton.addEventListener('click', () => {
-  principlesElement.forEach((principle) => {
-    principle.classList.remove('correct', 'incorrect');
-    principle.draggable = true;
-  });
-
-  renderDefinitions();
-  attachDefinitionEvents();
-
-  correctCount = 0;
-  score.textContent = '0';
-  stopTimer();
-  timer.textContent = '00:00';
-  showNotification('El juego ha sido reiniciado.', 'info');
-});
+resetButton.addEventListener('click', resetGame);
 
 function showNotification(message, type = 'info') {
   const container = document.querySelector('.notifications-container');
@@ -213,14 +204,19 @@ function attachDefinitionEvents() {
 function handleDrop(e) {
   e.preventDefault();
   const definition = e.target.closest('.definition');
-
   definition.classList.remove('highlight');
-
   const principleId = e.dataTransfer.getData('text/plain');
   const principle = document.getElementById(principleId);
   const principleAllowed = definition.dataset.principle;
   principle.classList.remove('correct', 'incorrect');
   principle.draggable = false;
+
+  // Guarda el intento para retroalimentación
+  feedbackData.push({
+    principle: principle.querySelector('p').textContent,
+    correct: principleAllowed === principleId,
+    definition: definition.querySelector('p').textContent
+  });
 
   if (principleAllowed === principleId) {
     principle.classList.add('correct');
@@ -237,5 +233,52 @@ function handleDrop(e) {
     stopTimer();
     showNotification('¡Has completado el juego!', 'info');
     showNotification(`Tu puntuación final es: ${correctCount} de ${principlesData.length}`, 'info');
+    showFeedbackPanel();
   }
 }
+
+// Reinicia el juego
+function resetGame() {
+  principlesElement.forEach((principle) => {
+    principle.classList.remove('correct', 'incorrect');
+    principle.draggable = true;
+  });
+
+  renderDefinitions();
+  attachDefinitionEvents();
+
+  correctCount = 0;
+  score.textContent = '0';
+  stopTimer();
+  timer.textContent = '00:00';
+  showNotification('El juego ha sido reiniciado.', 'info');
+  feedbackData = [];
+  feedbackPanel.style.display = 'none';
+  definitionsSection.style.display = 'flex';
+}
+
+// Muestra el panel de retroalimentación
+function showFeedbackPanel() {
+  definitionsSection.style.display = 'none';
+  feedbackPanel.style.display = 'flex';
+
+  let html = `<p class="feedback-score">
+    Tuviste ${correctCount} aciertos de ${principlesData.length}.
+  </p>
+  <ul class="feedback-list">`;
+  feedbackData.forEach(item => {
+    html += `<li class="definition feedback-item">
+      <strong>${item.principle}:</strong>
+      <span style="color:${item.correct ? 'green' : 'red'}">
+        ${item.correct ? 'Correcto' : 'Incorrecto'}
+      </span>
+      <br>
+      <em>${item.definition}</em>
+    </li>`;
+  });
+  html += '</ul>';
+  feedbackContent.innerHTML = html;
+}
+
+// Botón para volver al juego
+backToGameButton.addEventListener('click', resetGame);
