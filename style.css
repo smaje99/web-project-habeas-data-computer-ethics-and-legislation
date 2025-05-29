@@ -242,7 +242,7 @@ h2 {
 
 /* Estilos para el botón de alternar modo oscuro */
 .toggle-dark {
-  position: absolute;
+  position: fixed;
   bottom: 1rem;
   right: 1rem;
   background-color: var(--color-button-reset);

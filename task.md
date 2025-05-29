@@ -5,5 +5,5 @@ Desarrollar una aplicación web que empareje conceptos sobre los principios de l
 * [X] Implementar dark-mode.
 * [X] Detener el tiempo del juego cuando todo los principios hayan sido emparejados.
 * [X] Crear panel de retroalimentación, que será mostrado en lugar del panel de definiciones una vez terminado el juego.
-* [ ] Corregir posicionamiento del botón de modo oscuro, se mueve cuando se baja el scroll y eso no debería pasar.
+* [X] Corregir posicionamiento del botón de modo oscuro, se mueve cuando se baja el scroll y eso no debería pasar.
 * [ ] Después de reiniciar el juego, ser por elección o por habar completado el juego, en la siguiente partida, al finalizar esta el reloj no se reinicia y no da la retroalimentación.
