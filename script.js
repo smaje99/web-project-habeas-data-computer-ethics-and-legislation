@@ -248,6 +248,7 @@ function resetGame() {
   attachDefinitionEvents();
 
   correctCount = 0;
+  tryCount = 0;
   score.textContent = '0';
   stopTimer();
   timer.textContent = '00:00';
